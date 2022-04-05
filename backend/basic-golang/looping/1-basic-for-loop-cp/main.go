@@ -1,4 +1,5 @@
 package main
+import "fmt"
 
 func main() {
 	// tambahkan setiap data pada slice dibawah ini
@@ -7,8 +8,9 @@ func main() {
 	// buatlah perulangan for loop dari data di atas
 
 	// hint: gunakan len(data)
-	result := 0
+	
 	for i := 0; i <= len(data); i++ {
 		// TODO: answer here
+		fmt.Println(data)
 	}
 }

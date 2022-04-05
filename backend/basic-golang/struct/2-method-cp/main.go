@@ -10,6 +10,18 @@ import "fmt"
 
 type Rectangle struct {
 	// TODO: answer here
+	Width int
+	Length int
+}
+
+func (r Rectangle) GetArea(){
+	Area := r.Width*r.Length
+	fmt.Println("Area :", Area)
+}
+
+func (r Rectangle) GetPerimeter(){
+	Parimeter := 2*(r.Width+r.Length)
+	fmt.Println("Parimeter :", Parimeter)
 }
 
 // TODO: answer here

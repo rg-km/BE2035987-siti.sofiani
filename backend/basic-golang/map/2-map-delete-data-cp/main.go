@@ -17,15 +17,16 @@ func main() {
 	// terdapat kesalahan pada data gender tersebut dapatkan kalian memperbaiki nya ?
 	// TODO: answer here
 	for _, val := range namaUmur {
-		fmt.Println(val["name"], " ", val["gender"])
+		fmt.Println(val["name"], " ", val["gender"],)	
 	}
-
+	fmt.Println()
 	// Nah coba saatnya kalian menghapuskan key "gender" pada setiap data
 	// delete data if key is equal "gender"
 
 	for _, val := range namaUmur {
 		fmt.Println(val)
 	}
+	fmt.Println()
 	// Output sebelum dihapus
 	/*
 		map[gender:male name:Socrates]
@@ -36,6 +37,11 @@ func main() {
 	*/
 
 	// TODO: answer here
+	for _, val := range namaUmur {
+		delete(val, "gender")
+		fmt.Println(val)
+	}
+	fmt.Println()
 
 	// Output setelah dihapus
 	/*
@@ -45,7 +51,5 @@ func main() {
 		map[name:Leonhard Euler]
 		map[name:Blaise Pascal]
 	*/
-	for _, val := range namaUmur {
-		fmt.Println(val)
-	}
+	
 }

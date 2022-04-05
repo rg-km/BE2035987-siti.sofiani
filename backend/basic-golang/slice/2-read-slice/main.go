@@ -5,17 +5,17 @@ import "fmt"
 // Untuk membaca slice itu sebenarnya sama seperti pada array.
 // Kita cukup mengambil index nya
 func main() {
-	var slice []int
-	slice = append(slice, 1)
-	slice = append(slice, 2)
-	slice = append(slice, 3)
-	slice = append(slice, 4)
-	slice = append(slice, 5)
-	slice = append(slice, 6)
-	slice = append(slice, 7)
-	slice = append(slice, 8)
-	slice = append(slice, 9)
-	slice = append(slice, 10)
+	var slice []string
+	slice = append(slice, "k")
+	slice = append(slice, "a")
+	slice = append(slice, "k")
+	slice = append(slice, "a")
+	slice = append(slice, "k")
+	slice = append(slice, "a")
+	slice = append(slice, "k")
+	slice = append(slice, "a")
+	slice = append(slice, "k")
+	slice = append(slice, "a")
 	fmt.Println(slice[0])
 	fmt.Println(slice[9])
 
