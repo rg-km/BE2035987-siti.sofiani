@@ -11,6 +11,6 @@ func main() {
 	//contoh lain untuk melakukan pemangkatan 2
 	func(x int) {
 		fmt.Println(x * x)
-	}(3)
+	}(4)
 
 }

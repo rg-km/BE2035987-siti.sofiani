@@ -11,4 +11,10 @@ func main() {
 	isMarried := true
 
 	// TODO: answer here
+	n := &name
+	a := &age
+	i := &isMarried
+	fmt.Println("Nilai dari alamat memory", n ,"adalah",*n)
+	fmt.Println("Nilai dari alamat memory", a ,"adalah",*a)
+	fmt.Println("Nilai dari alamat memory", i ,"adalah",*i)
 }

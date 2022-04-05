@@ -11,4 +11,8 @@ import "fmt"
 // Outputkan jawabannya ya pastikan cap dan len nya adalah 2
 func main() {
 	// TODO: answer here
+	slice := []string {"ikhsan","maulana"}
+
+	fmt.Println(slice)
+	fmt.Println(len(slice), cap(slice))
 }
