@@ -7,7 +7,7 @@ import (
 )
 
 type CartItemRepository struct {
-	db db.DB
+	db db.DB // konektornya dari si db
 }
 
 func NewCartItemRepository(db db.DB) CartItemRepository {
@@ -65,63 +65,69 @@ func (u *CartItemRepository) Save(cartItems []CartItem) error {
 }
 
 func (u *CartItemRepository) SelectAll() ([]CartItem, error) {
-	cartItems, err := u.LoadOrCreate()
-	if err != nil {
-		return nil, err
-	}
-	return cartItems, nil
+	//return []CartItem{}, nil
+	return u.LoadOrCreate()
 }
 
 func (u *CartItemRepository) Add(product Product) error {
-	cartItems, err := u.LoadOrCreate()
+	carts, err := u.LoadOrCreate()
 	if err != nil {
 		return err
 	}
-	flag := false
-	for i := 0; i < len(cartItems); i++ {
-		if cartItems[i].ProductName == product.ProductName {
-			flag = true
-			cartItems[i].Quantity++
-			return u.Save(cartItems)
+
+	for i := 0; i < len(carts); i++ {
+		if carts[i].ProductName == product.ProductName {
+			carts[i].Quantity++
+			return u.Save(carts)
 		}
 	}
-	if flag == false {
-		cartItems = append(cartItems, CartItem{
-			Category:    product.Category,
-			ProductName: product.ProductName,
-			Price:       product.Price,
-			Quantity:    1,
-		})
-	}
-	return u.Save(cartItems) // TODO: replace this
+
+	carts = append(carts, CartItem{
+		Category:    product.Category,
+		ProductName: product.ProductName,
+		Price:       product.Price,
+		Quantity:    1,
+	})
+
+	return u.Save(carts)
 }
 
 func (u *CartItemRepository) ResetCartItems() error {
-	cartItems, err := u.LoadOrCreate()
+	//return nil
+	u.db.Delete("cart_items")
+
+	var resetData = [][]string{
+		{"category", "product_name", "price", "quantity"},
+	}
+
+	// error disini producs => cart_items
+	err := u.db.Save("cart_items", resetData)
 	if err != nil {
 		return err
 	}
-	cartItems = nil
 
-	return u.Save(cartItems) // TODO: replace this
+	return nil
 }
 
 func (u *CartItemRepository) TotalPrice() (int, error) {
-	cartItems, err := u.LoadOrCreate()
+	// get total price
+
+	// tinggal di total
+	// 2 barang
+	// a 1000 2 = 2000
+	// b 5000 3 = 15000
+	// 17000
+
+	carts, err := u.LoadOrCreate()
 	if err != nil {
 		return 0, err
 	}
-	var dummy []int
-	var total int
-	for i := 0; i < len(cartItems); i++ {
-		price := cartItems[i].Price
-		dummy = append(dummy, int(price))
+
+	totalPrice := 0
+
+	for i := 0; i < len(carts); i++ {
+		totalPrice += carts[i].Price * carts[i].Quantity
 	}
 
-	for _, v := range dummy {
-		total += v
-	}
-	total += 2000
-
-	return total, nil
+	return totalPrice, nil
 }
