@@ -21,7 +21,7 @@ func (todos *Todos) GetAll() []Item {
 }
 
 func (todos *Todos) GetUpcoming() []Item {
-	return err, i.items
+	return i.items
 }
 
 func NewItem(title string, deadline time.Time) Item {
