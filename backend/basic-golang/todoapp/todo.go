@@ -13,14 +13,15 @@ type Todos struct {
 
 func (todos *Todos) Add(item Item) {
 	// TODO: answer here
+	i.items = append(i.items, item)
 }
 
 func (todos *Todos) GetAll() []Item {
-	return []Item{} // TODO: replace this
+	return i.items
 }
 
 func (todos *Todos) GetUpcoming() []Item {
-	return []Item{} // TODO: replace this
+	return err, i.items
 }
 
 func NewItem(title string, deadline time.Time) Item {
