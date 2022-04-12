@@ -23,7 +23,7 @@ func (s Scores) Less(i, j int) bool {
 
 	if score1 > score2 {
 		return true
-	} else{
+	} else score1 < score2 {
 		return false
 	}
 
