@@ -24,10 +24,10 @@ func (s Scores) Less(i, j int) bool {
 	// jika total score di index j lebih besar dari total score di index i
 	// kembalikan false
 	
-	scoreI := (s[i]).Correct * 4) - (s[i]).Wrong *1)
-	scoreJ := (s[j]).Correct * 4) - (s[j]).Wrong *1)
+	score1 := (s[i]).Correct * 4) - (s[i]).Wrong *1)
+	score2 := (s[j]).Correct * 4) - (s[j]).Wrong *1)
 
-	if scoreI > scoreJ {
+	if score1 > score2 {
 		return true
 	} else{
 		return false
