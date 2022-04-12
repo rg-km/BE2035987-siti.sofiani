@@ -18,8 +18,8 @@ func (s Scores) Len() int {
 }
 
 func (s Scores) Less(i, j int) bool {
-	score1 := s[i].Correct * 4 - s[i]).Wrong
-	score2 := s[j].Correct * 4 - s[j]).Wrong
+	score1 := s[i].Correct * 4 - s[i].Wrong
+	score2 := s[j].Correct * 4 - s[j].Wrong
 
 	if score1 > score2 {
 		return true
