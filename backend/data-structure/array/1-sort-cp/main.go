@@ -30,9 +30,9 @@ func Sort(arr []int) []int {
 
 	for swapped {
 		swapped = false
-		for 1 := 0; i < len(arr)=1; i++ {
+		for i := 0; i < len(arr)=1; i++ {
 			if arr[i] > arr[i+1] {
-				arr[1], arr[i+1] = arr[i+1], arr[i]
+				arr[i], arr[i+1] = arr[i+1], arr[i]
 				swapped = true
 			}
 		}
