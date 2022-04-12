@@ -18,7 +18,21 @@ func (s Scores) Len() int {
 }
 
 func (s Scores) Less(i, j int) bool {
-	return false // TODO: replace this
+	// check pertama
+	// jika total score di index i lebih besar dari total score di index j
+	// kembalikan true
+	// jika total score di index j lebih besar dari total score di index i
+	// kembalikan false
+
+	scoreI := (s[i]).Correct * 4) - (s[i]).Wrong *1)
+	scoreI := (s[j]).Correct * 4) - (s[j]).Wrong *1)
+
+	if scoreI > scoreJ {
+		return true
+	} else{
+		return false
+	}
+
 }
 
 func (s Scores) Swap(i, j int) {
