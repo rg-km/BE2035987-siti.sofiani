@@ -26,7 +26,7 @@ func main() {
 
 func Sort(arr []int) []int {
 	//return []int{} // TODO: replace this
-	swapped != false
+	swapped := false
 	for i := 0; i < len(arr)-1; i++ {
 		for j := 0; j < len(arr)-1; j++ {
 			if arr[j] > arr[j+i] {
