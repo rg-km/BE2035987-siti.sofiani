@@ -25,7 +25,7 @@ func main() {
 }
 
 func Sort(arr []int) []int {
-	//return []int{} // TODO: replace this
+	//return []int{} 
 	swapped := false
 	for i := 0; i < len(arr)-1; i++ {
 		for j := 0; j < len(arr)-1; j++ {
@@ -44,7 +44,7 @@ func Sort(arr []int) []int {
 
 
 func RotateLeft(d int, arr []int) []int {
-	// return []int{} // TODO: replace this
+	// return []int{} 
 	arrLenght := int(len(arr))
 	arrResult := arr[d:arrLenght]
 	for _, v := range arr[0:d] {
