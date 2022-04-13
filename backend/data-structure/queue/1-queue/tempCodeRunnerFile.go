@@ -1,0 +1,1 @@
+barisan paling depan dan orang 
