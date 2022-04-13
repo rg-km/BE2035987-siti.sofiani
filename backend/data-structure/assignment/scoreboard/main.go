@@ -23,7 +23,7 @@ func (s Scores) Less(i, j int) bool {
 
 	if scoreI > scoreJ {
 		return true
-	} else scoreI < scoreJ {
+	} else if scoreI < scoreJ {
 		return false
 	} else {
 		
@@ -31,10 +31,9 @@ func (s Scores) Less(i, j int) bool {
 			return true
 		} else if s[i].Correct < s[j].Correct {
 			return false
+		} else {
+			return s[i].Name < s[j].Name
 		}
-	
-	return s[i].Name < s[j].Name
-
 	}
 }
 
