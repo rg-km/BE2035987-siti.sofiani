@@ -25,7 +25,7 @@ func SearchMatch(arr1 []string, arr2 []string) ([]string, error) {
 		}
 	}
 	if len(SearchMatch) == 0 {
-		return nill, fmt.Error("no match")
+		return nil, fmt.Errorf("no match")
 	}
 	return SearchMatch, nil
 }
