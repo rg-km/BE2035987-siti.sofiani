@@ -36,5 +36,5 @@ func MostWordsFound(sentences []string) int {
 
 func CountWords(sentence string) int {
 	//return 0 // TODO: replace this
-	return len(strings.Fields(sentence))
+	return len(string.Fields(sentence))
 }
