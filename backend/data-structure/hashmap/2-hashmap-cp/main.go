@@ -27,5 +27,8 @@ func main() {
 }
 
 func AnagramsChecker(str1 string, str2 string) string {
-	return "" // TODO: replace this
+	if len(str1) != len(str2) {
+		return "Bukan Anagram"
+	}
+	return "Anagram" // TODO: replace this
 }
