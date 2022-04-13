@@ -15,7 +15,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	var sentences = []string{"Andi suka bermain bola", "Saya sedang belajar struktur data", "Terima kasih"}
@@ -36,5 +39,5 @@ func MostWordsFound(sentences []string) int {
 
 func CountWords(sentence string) int {
 	//return 0 // TODO: replace this
-	return len(string.Field(sentence))
+	return len(strings.Fields(sentence))
 }
