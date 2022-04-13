@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"os"
 	"strings"
-
+	
 	"github.com/ruang-guru/playground/backend/data-structure/assignment/ruangkata/downloader"
 )
 
@@ -49,9 +49,27 @@ func NewEnglishSpellChecker() (SpellChecker, error) {
 }
 
 func (s *spellchecker) CheckWord(word string) bool {
-	return false // TODO: replace this
+	// return false // TODO: replace this
+	sc := strings.ToLower(word)
+	_, ok := s.words[sc]
+	return ok
 }
 
 func (s *spellchecker) CheckSentence(sentence string) (validWords []string, invalidWords []string) {
-	return nil, nil // TODO: replace this
+	// return nil, nil // TODO: replace this
+	validWords = make([]string, 0)
+	invalidWords = make([]string, 0)
+
+	words := strings.Split(sentence, " ")
+	for _, word := range words {
+		if s.CheckWord(word) {
+			validWords = append(validWords, word)
+		} else {
+			invalidWords = append(invalidWords, word)
+		}
+	}
+
+	return validWords, invalidWords
+
+	
 }
