@@ -21,20 +21,20 @@ func (s Scores) Less(i, j int) bool {
 	score1 := s[i].Correct * 4 - s[i].Wrong
 	score2 := s[j].Correct * 4 - s[j].Wrong
 
-	if score1 > score2 {
+	if scoreI > scoreJ {
 		return true
-	} else score1 < score2 {
+	} else scoreI < scoreJ {
 		return false
-	}
-
-	if s[i].Correct > s[j].Correct {
-		return true
-	} else if s[i].Correct < s[j].Correct {
-		return false
-	}
-
+	}else{
+		if s[i].Correct > s[j].Correct {
+			return true
+		} else if s[i].Correct < s[j].Correct {
+			return false
+		}
+	
 	return s[i].Name < s[j].Name
 
+	}
 }
 
 func (s Scores) Swap(i, j int) {
