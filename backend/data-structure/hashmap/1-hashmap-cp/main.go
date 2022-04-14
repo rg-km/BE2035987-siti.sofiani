@@ -22,10 +22,11 @@ func AgeDistribution(people []Person) map[int]int {
 }
 
 func FilterByAge(people []Person, age int) []Person {
+	// return []Person{} // TODO: replace this
 	var filteredAge []Person
 	for _, person := range people {
 		if person.age == age {
-			filteredPeople = append(filteredAge, person)
+			filteredAge = append(filteredAge, person)
 		}
 	}
 	return filteredAge
