@@ -64,6 +64,10 @@ func (node ListNode) MiddleNode(head *ListNode) *ListNode {
 		tmp = tmp.Next
 		l++
 	}
+	for i := 0; i < l / 2; i++ {
+        head = head.Next
+	}
+
 	// TODO: answer here
 	return head
 }
