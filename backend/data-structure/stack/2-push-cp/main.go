@@ -16,7 +16,7 @@ type Stack struct {
 func NewStack(size int) Stack {
 	return Stack {
 		Top: -1,
-		Data: make([]int, size),
+		Data: make([]int, 0, size),
 	}
 }
 
