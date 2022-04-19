@@ -9,20 +9,25 @@ import (
 var ErrStackOverflow = errors.New("stack overflow")
 
 type Stack struct {
-	Top int
+	// TODO: answer here
+	Top  int
 	Data []int
+	Size int
 }
 
 func NewStack(size int) Stack {
-	return Stack {
-		Top: -1,
-		Data: make([]int, 0, size),
+	// TODO: answer here
+	return Stack{
+		Top:  -1,
+		Data: []int{},
+		Size: size,
 	}
 }
 
 func (s *Stack) Push(Elemen int) error {
-	if s.Top == len(s.Data) {
-		return Errorf
+	// TODO: answer here
+	if s.Top == s.Size-1 {
+		return ErrStackOverflow
 	}
 
 	s.Top++
