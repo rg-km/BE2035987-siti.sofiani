@@ -29,9 +29,12 @@ func ThreeConsecutiveCharacterPositionCorrect(word string) int {
 		return -1
 	}
 
-	for 1 := 0; 1 < len(word)-1; i++ {
+	//fmt.Println(len(word)) // 0 - 0 = 10 characters 
+
+	for i := 0; i < len(word)-2; i++ { // 0 - 8 = 9 characters
 		if word[i] == word[i+1] && word[i] == word[i+2] {
-			return i +1
+			return i +1 // 8 characters + 1 = 9 characters (len(word) = 10)
 		}
 	}
+	return -1 // TODO replace this
 }
