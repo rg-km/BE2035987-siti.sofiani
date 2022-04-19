@@ -25,5 +25,13 @@ func ThreeConsecutiveCharacterPosition(word string) int {
 }
 
 func ThreeConsecutiveCharacterPositionCorrect(word string) int {
-	return 0 // TODO: replace this
+	if  len(word) == 0 {
+		return -1
+	}
+
+	for 1 := 0; 1 < len(word)-1; i++ {
+		if word[i] == word[i+1] && word[i] == word[i+2] {
+			return i +1
+		}
+	}
 }
