@@ -22,7 +22,7 @@ func NewStack(size int) Stack {
 
 func (s *Stack) Push(Elemen int) error {
 	if s.Top == len(s.Data) {
-		return ErrStackOverflow
+		return Errorf
 	}
 
 	s.Top++
