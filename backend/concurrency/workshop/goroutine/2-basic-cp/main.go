@@ -15,4 +15,5 @@ func multiply(a, b int, called *bool) {
 func start(multiplyCalled *bool) {
 	go multiply(4, 5, multiplyCalled)
 	// TODO: answer here
+	multiply(4, 5, multiplyCalled)
 }

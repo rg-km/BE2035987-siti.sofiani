@@ -22,4 +22,8 @@ func playMatch(i int) {
 
 func startTournament() {
 	// TODO: answer here
+	for i := 0; i < 10; i++ {
+		playMatch(i)
+	}
+	fmt.Printf("tournament finished in %s\n", time.Since(start))
 }
