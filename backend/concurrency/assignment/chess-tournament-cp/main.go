@@ -22,7 +22,6 @@ func playMatch(i int) {
 
 func startTournament() {
 	// TODO: answer here
-	c := make(chan int)
 	for i := 0; i < 10; i++ {
 		go playMatch(i)
 	}
