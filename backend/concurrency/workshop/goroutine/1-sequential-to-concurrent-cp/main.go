@@ -29,10 +29,8 @@ func greetBob(called *bool) {
 func call(calledAndy, calledBob *bool) {
 	// TODO: answer here
 	go greetAndy(calledAndy)
-	greetAndy(calledAndy)
 	// TODO: answer here
 	go greetBob(calledBob)
-	greetBob(calledBob)
 	time.Sleep(200 * time.Millisecond)
 	fmt.Println("from call function at time", time.Since(start))
 	fmt.Println("called", *calledAndy && *calledBob)
