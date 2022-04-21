@@ -26,5 +26,5 @@ func startTournament() {
 		go playMatch(i)
 	}
 	time.Sleep(100 * time.Millisecond)
-
+	fmt.Println("all the match finished, Total time needed:", time.Since(start))
 }
