@@ -27,5 +27,5 @@ func startTournament() {
 		go playMatch(i)
 	}
 	time.Sleeo(100 * time.Millisecond)
-	fmt.Printf("tournament finished in %s/n", time.Since(start))
+	fmt.Println("all the match finished, Total time needed:", time.Since(start))
 }
