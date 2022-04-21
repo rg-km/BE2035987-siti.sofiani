@@ -1,27 +1,37 @@
 package main
 
 import (
+	"fmt"
 	"time"
-
-	. "github.com/onsi/ginkgo/v2"
-	. "github.com/onsi/gomega"
-	"github.com/onsi/gomega/gmeasure"
 )
 
-var _ = Describe("Goroutine", func() {
-	It("can make program run concurrently", func() {
-		experiment := gmeasure.NewExperiment("goroutine")
-		AddReportEntry(experiment.Name, experiment)
-		calledAndy := false
-		calledBob := false
-		experiment.Sample(func(idx int) {
-			experiment.MeasureDuration("goroutine", func() {
-				call(&calledAndy, &calledBob)
-			})
-		}, gmeasure.SamplingConfig{N: 3})
-		goroutineStats := experiment.GetStats("goroutine")
-		meanDuration := goroutineStats.DurationFor(gmeasure.StatMean)
-		Expect(calledAndy && calledBob).To(Equal(true))
-		Expect(meanDuration).To(BeNumerically("~", 200*time.Millisecond, 50*time.Millisecond))
-	})
-})
+var start time.Time
+
+func init() {
+	start = time.Now()
+}
+
+//kode di atas hanya untuk membantu mengetahui waktu program dijalankan
+
+func greetAndy(called *bool) {
+	time.Sleep(100 * time.Millisecond)
+	*called = true
+	fmt.Println("hi Andy. at time", time.Since(start))
+}
+
+func greetBob(called *bool) {
+	time.Sleep(100 * time.Millisecond)
+	*called = true
+	fmt.Println("hi Bob. at time", time.Since(start))
+}
+
+//Bagaimana cara agar greetAndy dan greetBob dapat berjalan secara concurrent ?
+func call(calledAndy, calledBob *bool) {
+	// TODO: answer here
+	go greetAndy(calledAndy)
+	// TODO: answer here
+	go greetBob(calledBob)
+	time.Sleep(200 * time.Millisecond)
+	fmt.Println("from call function at time", time.Since(start))
+	fmt.Println("called", *calledAndy && *calledBob)
+}
