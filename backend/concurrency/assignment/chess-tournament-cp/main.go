@@ -24,13 +24,8 @@ func startTournament() {
 	// TODO: answer here
 	c := make(chan int)
 	for i := 0; i < 10; i++ {
-		go func(i int) {
-			playMatch(i)
-			c <- i
-		}(i)
+		go playMatch(i)
 	}
-	for i := 0; i < 10; i++ {
-		<-c
-	}
+	time.Sleeo(100 * time.Millisecond)
 	fmt.Printf("tournament finished in %s/n", time.Since(start))
 }
