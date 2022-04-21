@@ -5,13 +5,33 @@ import (
 	"time"
 )
 
-func main() {
-	go func() {
-		result := 0
-		for i := 0; i < 5; i++ {
-			result += i
-		}
-		time.Sleep(10 * time.Millisecond)
-		fmt.Println("main stop")
-	}()
+var start time.Time
+
+func init() {
+	start = time.Now()
+}
+
+//kode di atas hanya untuk membantu mengetahui waktu program dijalankan
+
+func greetAndy(called *bool) {
+	time.Sleep(100 * time.Millisecond)
+	*called = true
+	fmt.Println("hi Andy. at time", time.Since(start))
+}
+
+func greetBob(called *bool) {
+	time.Sleep(100 * time.Millisecond)
+	*called = true
+	fmt.Println("hi Bob. at time", time.Since(start))
+}
+
+//Bagaimana cara agar greetAndy dan greetBob dapat berjalan secara concurrent ?
+func call(calledAndy, calledBob *bool) {
+	// TODO: answer here
+	go greetAndy(calledAndy)
+	// TODO: answer here
+	go greetBob(calledBob)
+	time.Sleep(200 * time.Millisecond)
+	fmt.Println("from call function at time", time.Since(start))
+	fmt.Println("called", *calledAndy && *calledBob)
 }
