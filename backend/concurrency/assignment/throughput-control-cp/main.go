@@ -13,6 +13,7 @@ const numOfRequests = 1000
 //bagaimana cara membatasi data yang diproses ? hint:buffered channel
 func doubleCalculatorWorker(queue chan request, maxThroughput int, maxObservedThroughtputC chan int) {
 	// TODO: answer here
+	channelCupii :=(chan int, maxThroughput)
 
 	maxObservedThroughtput := 0
 	curThroughtput := 0
@@ -22,6 +23,7 @@ func doubleCalculatorWorker(queue chan request, maxThroughput int, maxObservedTh
 	mu := &sync.Mutex{}
 	for req := range queue {
 		// TODO: answer here
+		channelCupii <- 1
 		go func(req request) {
 			mu.Lock()
 			curThroughtput++
@@ -39,6 +41,7 @@ func doubleCalculatorWorker(queue chan request, maxThroughput int, maxObservedTh
 			mu.Unlock()
 
 			// TODO: answer here
+			<-channelCupii
 		}(req)
 	}
 	maxObservedThroughtputC <- maxObservedThroughtput
