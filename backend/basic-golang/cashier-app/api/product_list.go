@@ -3,7 +3,6 @@ package api
 import (
 	"fmt"
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
@@ -22,7 +21,14 @@ type ProductListSuccessResponse struct {
 }
 
 func (api *API) productList(w http.ResponseWriter, req *http.Request) {
+	api.AllowOrigin(w, req)
 	encoder := json.NewEncoder(w)
+	// _, err := api.AuthMiddleWare(w, req)
+	// if err != nil {
+	// 	w.WriteHeader(http.StatusUnauthorized)
+	// 	encoder.Encode(ProductListErrorResponse{Error: err.Error()})
+	// 	return
+	// }
 
 	response := ProductListSuccessResponse{}
 	response.Products = make([]Product, 0)
@@ -39,6 +45,7 @@ func (api *API) productList(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+<<<<<<< HEAD
 	fmt.Println(products)
 <<<<<<< HEAD
 	for _, Barang := range products{
@@ -53,6 +60,9 @@ func (api *API) productList(w http.ResponseWriter, req *http.Request) {
 
 }
 =======
+=======
+	// fmt.Println(products)
+>>>>>>> c6d1c9033fc06f6d8552a998e825bd83e37a3738
 
 	encoder.Encode(ProductListSuccessResponse{Products: []Product{}}) // TODO: replace this
 }
