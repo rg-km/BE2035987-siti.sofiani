@@ -22,7 +22,7 @@ var _ = Describe("Server Basic Auth", func() {
 			It("should return unauthorized", func() {
 				wr := httptest.NewRecorder()
 				req := httptest.NewRequest("GET", "/login", nil)
-				req.SetBasicAuth("unknow", "aditira123")
+				req.SetBasicAuth("unknow", "sofiani1804")
 				Routes().ServeHTTP(wr, req)
 
 				Expect(wr.Code).To(Equal(401))
@@ -33,7 +33,7 @@ var _ = Describe("Server Basic Auth", func() {
 			It("should return unauthorized", func() {
 				wr := httptest.NewRecorder()
 				req := httptest.NewRequest("GET", "/login", nil)
-				req.SetBasicAuth("aditira", "unknow123")
+				req.SetBasicAuth("Sofiani", "unknow123")
 				Routes().ServeHTTP(wr, req)
 
 				Expect(wr.Code).To(Equal(401))
@@ -44,7 +44,7 @@ var _ = Describe("Server Basic Auth", func() {
 			It("should return a successful login response", func() {
 				wr := httptest.NewRecorder()
 				req := httptest.NewRequest("GET", "/login", nil)
-				req.SetBasicAuth("aditira", "aditira123")
+				req.SetBasicAuth("Sofiani", "sofiani1804")
 				Routes().ServeHTTP(wr, req)
 
 				Expect(wr.Code).To(Equal(200))

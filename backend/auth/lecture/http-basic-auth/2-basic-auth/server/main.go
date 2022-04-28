@@ -6,7 +6,7 @@ import (
 )
 
 var users = map[string]string{
-	"aditira": "aditira123",
+	"sofiani": "sofiani1804",
 	"dito":    "123dito",
 	"miya":    "12345",
 }
