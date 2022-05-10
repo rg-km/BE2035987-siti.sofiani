@@ -22,12 +22,48 @@ func NewURLHandler(repo *repository.URLRepository) URLHandler {
 
 func (h *URLHandler) Get(c *gin.Context) {
 	// TODO: answer here
+	shortURL := c.Param("shortURL")
+	entityURL, err := h.repo.Get(shortURL)
+	if err != nil {
+		c.JSON(http.StatusNotFound, err.Error())
+	}
+	//REDIRECT TO LONG URL
+	c.Writer.Header().Set("Location", entityURL.LongURL)
+	c.JSON(http.StatusNotFound, gin.H{
+		"massage": "Redirect",
+	})
 }
 
 func (h *URLHandler) Create(c *gin.Context) {
 	// TODO: answer here
+	var entityURL entity.URL
+	errReq := c.ShouldBindJSON(&entityURL)
+	if errReq != nil {
+		c.JSON(http.StatusBadRequest, entity.ErrBadRequest)
+	}
+
+	entityURLResp, err := h.repo.Create(entityURL.LongURL)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err.Error())
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"Data": entityURLResp
+	})
 }
 
 func (h *URLHandler) CreateCustom(c *gin.Context) {
 	// TODO: answer here
+	var entityURL entity.URL
+	errReq := c.ShouldBindJSON(&entityURL)
+	if errReq != nil {
+		c.JSON(http.StatusBadRequest, entity.ErrBadRequest)
+	}
+
+	entityURLResp, err := h.repo.CreateCustom(entityURL.LongURL,entityURL.shortURL)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err.Error())
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"Data": entityURLResp
+	})
 }
