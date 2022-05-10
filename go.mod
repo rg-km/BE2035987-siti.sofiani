@@ -29,9 +29,7 @@ require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/gdamore/encoding v1.0.0 // indirect
 	github.com/gdamore/tcell/v2 v2.4.1-0.20210905002822-f057f0a857a1 // indirect
-<<<<<<< HEAD
 	github.com/golang/protobuf v1.5.2 // indirect
-=======
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
@@ -39,7 +37,6 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/gorilla/securecookie v1.1.1 // indirect
 	github.com/influxdata/tdigest v0.0.0-20180711151920-a7d76c6f093a // indirect
->>>>>>> c6d1c9033fc06f6d8552a998e825bd83e37a3738
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mailru/easyjson v0.7.0 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
@@ -51,25 +48,19 @@ require (
 	github.com/prometheus/common v0.32.1 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
-<<<<<<< HEAD
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
-=======
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
->>>>>>> c6d1c9033fc06f6d8552a998e825bd83e37a3738
 	google.golang.org/protobuf v1.28.0 // indirect
 )
 
 require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
-<<<<<<< HEAD
-=======
 	github.com/gin-gonic/gin v1.7.7
 	github.com/golang-jwt/jwt/v4 v4.4.1
 	github.com/gorilla/pat v1.0.1
 	github.com/gorilla/sessions v1.2.1
->>>>>>> c6d1c9033fc06f6d8552a998e825bd83e37a3738
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
@@ -87,15 +78,9 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
-<<<<<<< HEAD
-<<<<<<< HEAD
 	golang.org/x/net v0.0.0-20220420153159-1850ba15e1be // indirect
-=======
 	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
->>>>>>> c6d1c9033fc06f6d8552a998e825bd83e37a3738
-=======
 	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
->>>>>>> 716a7e54f71afaba3efda6efe656fd491d02654b
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	golang.org/x/text v0.3.7 // indirect
