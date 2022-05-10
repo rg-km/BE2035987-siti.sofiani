@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"errors"
+	"fmt"
 	"net/http"
 
 	"github.com/ruang-guru/playground/backend/golang-http-server/assignment/url-shortener/entity"
@@ -22,48 +22,67 @@ func NewURLHandler(repo *repository.URLRepository) URLHandler {
 
 func (h *URLHandler) Get(c *gin.Context) {
 	// TODO: answer here
-	shortURL := c.Param("shortURL")
-	entityURL, err := h.repo.Get(shortURL)
+	path := c.Param("path")
+	url, err := h.repo.Get(path)
 	if err != nil {
-		c.JSON(http.StatusNotFound, err.Error())
+		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		return
 	}
-	//REDIRECT TO LONG URL
-	c.Writer.Header().Set("Location", entityURL.LongURL)
-	c.JSON(http.StatusNotFound, gin.H{
-		"massage": "Redirect",
-	})
+	if url.LongURL == "" {
+		c.JSON(http.StatusNotFound, gin.H{"error": entity.ErrURLNotFound})
+		return
+	}
+
+	c.Redirect(http.StatusFound, url.LongURL)
+
 }
 
 func (h *URLHandler) Create(c *gin.Context) {
 	// TODO: answer here
-	var entityURL entity.URL
-	errReq := c.ShouldBindJSON(&entityURL)
-	if errReq != nil {
-		c.JSON(http.StatusBadRequest, entity.ErrBadRequest)
+	var url entity.URL
+	if err := c.ShouldBindJSON(&url); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err,
+		})
 	}
-
-	entityURLResp, err := h.repo.Create(entityURL.LongURL)
+	urls, err := h.repo.Create(url.LongURL)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, err.Error())
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err,
+		})
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"Data": entityURLResp
+		"longURL":  urls.LongURL,
+		"shortURL": urls.ShortURL,
 	})
 }
 
 func (h *URLHandler) CreateCustom(c *gin.Context) {
 	// TODO: answer here
-	var entityURL entity.URL
-	errReq := c.ShouldBindJSON(&entityURL)
-	if errReq != nil {
-		c.JSON(http.StatusBadRequest, entity.ErrBadRequest)
+	var url entity.URL
+	if err := c.ShouldBindJSON(&url); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err,
+		})
 	}
 
-	entityURLResp, err := h.repo.CreateCustom(entityURL.LongURL,entityURL.shortURL)
+	if url.LongURL == "" {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": entity.ErrURLNotFound,
+		})
+	}
+	urls, err := h.repo.CreateCustom(url.LongURL, url.ShortURL)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, err.Error())
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err,
+		})
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"Data": entityURLResp
+		"longURL":  url.LongURL,
+		"shortURL": url.ShortURL,
 	})
+
+	fmt.Println("longnya", urls.LongURL)
+	fmt.Println("shortnya", urls.ShortURL)
+	fmt.Println("test ::", url)
 }
