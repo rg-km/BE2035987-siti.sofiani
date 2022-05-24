@@ -1,8 +1,12 @@
 package main
 
+<<<<<<< HEAD
 import (
 	"fmt"
 )
+=======
+import "fmt"
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
 
 type StudentRow struct {
 	ID       int // primary key
@@ -63,6 +67,7 @@ func (db *SchoolTable) InsertSchool(name string, address string) {
 }
 
 func (db *StudentTable) WhereStudent(id int) *StudentRow {
+<<<<<<< HEAD
 	for _, student := range *db {
 		if student.ID == id {
 			return &student
@@ -79,3 +84,11 @@ func (db *SchoolTable) GetSchool(schoolID int) SchoolRow {
 	}
 	return SchoolRow{}
 }
+=======
+	// TODO: answer here
+}
+
+func (db *SchoolTable) GetSchool(schoolID int) SchoolRow {
+	// TODO: answer here
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

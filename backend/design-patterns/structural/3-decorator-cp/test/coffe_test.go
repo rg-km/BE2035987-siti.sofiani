@@ -14,7 +14,11 @@ var _ = Describe("Coffe", func() {
 			Expect(coffe.GetCost()).To(Equal(3.00))
 		})
 
+<<<<<<< HEAD
 		It("should return the cost of Espresso", func() {
+=======
+		It("should return the cost of Mocha", func() {
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
 			coffe := coffe.Espresso{}
 			Expect(coffe.GetCost()).To(Equal(2.00))
 		})
@@ -61,8 +65,16 @@ var _ = Describe("Coffe", func() {
 
 			Expect(ice2.GetDescription()).To(Equal("Coldbrew, Ice, Whipcream, Ice, BEKU"))
 
+<<<<<<< HEAD
 			// There is error in this test it should equal 3.50. But the test expected 3.5000000000000004
 			Expect(ice2.GetCost()).Should(BeNumerically(">=", 3.50))
 		})
 	})
 })
+=======
+			// There is error in this test it should equal 2.50. But the test expected 2.5000000000000004
+			Expect(ice2.GetCost()).Should(BeNumerically(">=", 3.50))
+		})
+	})
+})
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

@@ -33,6 +33,7 @@ func (db *InvoiceDB) Insert(code string, name string, address string, phone stri
 }
 
 func (db *InvoiceDB) Where(id PrimaryKey) *InvoiceRow {
+<<<<<<< HEAD
 	result, ok := db.m[id]
 	if !ok {
 		return nil
@@ -53,3 +54,11 @@ func (db *InvoiceDB) Update(id PrimaryKey, code string, name string, address str
 
 	return &invoice, nil
 }
+=======
+	return InvoiceRow{} // TODO: replace this
+}
+
+func (db *InvoiceDB) Update(id PrimaryKey, code string, name string, address string, phone string) (*InvoiceRow, error) {
+	return nil, nil // TODO: replace this
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

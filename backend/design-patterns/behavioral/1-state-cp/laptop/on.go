@@ -15,6 +15,11 @@ func (o On) CanTurnOnLaptop() bool {
 }
 
 func (o On) Sleep() {
+<<<<<<< HEAD
 	o.Laptop.ChangeCurrentState("Sleeping")
 	o.Laptop.ChangeState(Sleeping{o.Laptop})
 }
+=======
+	// TODO: answer here
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

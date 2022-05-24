@@ -2,6 +2,10 @@ package simpleserver
 
 import (
 	"encoding/json"
+<<<<<<< HEAD
+=======
+	"fmt"
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
 	"net/http"
 )
 
@@ -23,6 +27,7 @@ type Server struct {
 }
 
 func (s *Server) GetPerson(w http.ResponseWriter, r *http.Request) {
+<<<<<<< HEAD
 	res := Person{
 		Name:  "John Doe",
 		Age:   30,
@@ -32,6 +37,9 @@ func (s *Server) GetPerson(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 	encoder := json.NewEncoder(w)
 	encoder.Encode(res)
+=======
+	// TODO: answer here
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
 }
 
 type Logging struct {
@@ -39,8 +47,13 @@ type Logging struct {
 
 // Karena agak ribet untuk melakukan testing pada stdout. Maka disini kita menggantinya dengan Header
 func (l Logging) AddLogging(endpoint func(http.ResponseWriter, *http.Request)) http.Handler {
+<<<<<<< HEAD
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		endpoint(w, r)
 		w.Header().Add("System-Log", "logged")
 	})
 }
+=======
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) // TODO: replace this
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

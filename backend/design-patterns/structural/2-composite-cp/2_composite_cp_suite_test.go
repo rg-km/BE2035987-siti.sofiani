@@ -10,4 +10,8 @@ import (
 func Test2CompositeCp(t *testing.T) {
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "2CompositeCp Suite")
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

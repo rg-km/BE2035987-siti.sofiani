@@ -29,6 +29,7 @@ func (h *HashMap) Put(key int, value string) error {
 }
 
 func (h *HashMap) GetRange(from, to int) ([]string, error) {
+<<<<<<< HEAD
 	result := make([]string, 0)
 	for key, value := range h.m {
 		if key >= from && key <= to {
@@ -37,3 +38,7 @@ func (h *HashMap) GetRange(from, to int) ([]string, error) {
 	}
 	return result, nil
 }
+=======
+	return nil, nil // TODO: replace this
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

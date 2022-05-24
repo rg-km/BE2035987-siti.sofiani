@@ -51,4 +51,8 @@ func (l Laptop) Sleep() {
 
 func (l *Laptop) ChangeCurrentState(state string) {
 	l.CurrentState = state
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

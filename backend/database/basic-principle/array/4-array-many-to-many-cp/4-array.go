@@ -1,8 +1,12 @@
 package main
 
+<<<<<<< HEAD
 import (
 	"fmt"
 )
+=======
+import "fmt"
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
 
 type PhoneRow struct {
 	ID          int // primary key
@@ -15,8 +19,13 @@ type UserRow struct {
 	Age  int
 }
 type UserPhoneRow struct {
+<<<<<<< HEAD
 	UserID  int // foreign key
 	PhoneID int // foreign key
+=======
+	UserID  int // primary key
+	PhoneID int // primary key
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
 }
 
 type PhoneTable []PhoneRow
@@ -96,18 +105,23 @@ func (db *UserPhoneTable) InsertUserPhone(userID int, phoneID int) {
 
 func (db *PhoneTable) GetPhone(phoneID int) PhoneRow {
 	var result PhoneRow
+<<<<<<< HEAD
 	for _, phone := range *db {
 		if phone.ID == phoneID {
 			result = phone
 			break
 		}
 	}
+=======
+	// TODO: answer here
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
 	return result
 
 }
 
 func (db *UserTable) GetUser(userID int) UserRow {
 	var result UserRow
+<<<<<<< HEAD
 	for _, user := range *db {
 		if user.ID == userID {
 			result = user
@@ -116,3 +130,8 @@ func (db *UserTable) GetUser(userID int) UserRow {
 	}
 	return result
 }
+=======
+	// TODO: answer here
+	return result
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

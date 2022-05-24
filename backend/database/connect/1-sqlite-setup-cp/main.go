@@ -24,6 +24,7 @@ func main() {
 }
 
 func ConnectSQLite() (string, error) {
+<<<<<<< HEAD
 	db, err := sql.Open("sqlite3", "./studentData.db")
 	if err != nil {
 		return "", err
@@ -31,3 +32,9 @@ func ConnectSQLite() (string, error) {
 	defer db.Close()
 	return "You are successfully opening the database studentData.db", nil
 }
+=======
+	sql.Open("", "") // replace with your own database path
+
+	return "", nil // TODO: replace this
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

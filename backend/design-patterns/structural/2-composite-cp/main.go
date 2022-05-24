@@ -6,8 +6,11 @@ import (
 	"github.com/ruang-guru/playground/backend/design-patterns/structural/2-composite-cp/perusahaan"
 )
 
+<<<<<<< HEAD
 // CTO -> { VP1 -> { J1, J2 }, VP2 -> { J3 } }
 
+=======
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
 func main() {
 	j1 := perusahaan.Junior{}
 	j2 := perusahaan.Junior{}
@@ -25,7 +28,14 @@ func main() {
 		Subordinate: []perusahaan.Employee{vp1, vp2},
 	}
 
+<<<<<<< HEAD
 	fmt.Printf("Total divison CEO salary: %d\n", cto.TotalDivisonSalary())  // 30 + 40 + 30 = 100
 	fmt.Printf("Total divison VP-1 salary: %d\n", vp1.TotalDivisonSalary()) // 20 + 10 + 10 = 40
 	fmt.Printf("Total divison VP-2 salary: %d\n", vp2.TotalDivisonSalary()) // 20 + 10 = 30
 }
+=======
+	fmt.Printf("Total divison CEO salary: %d\n", cto.TotalDivisonSalary())
+	fmt.Printf("Total divison VP-1 salary: %d\n", vp1.TotalDivisonSalary())
+	fmt.Printf("Total divison VP-2 salary: %d\n", vp2.TotalDivisonSalary())
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

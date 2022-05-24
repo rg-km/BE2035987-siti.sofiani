@@ -6,4 +6,8 @@ package perusahaan
 type Employee interface {
 	GetSalary() int
 	TotalDivisonSalary() int
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675

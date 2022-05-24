@@ -12,9 +12,17 @@ type SortKM struct {
 }
 
 func (s *SortKM) Sort(array []int) {
+<<<<<<< HEAD
 	s.Strategy.Sort(array)
+=======
+	// TODO: answer here
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
 }
 
 func (s *SortKM) SetStrategy(Strategy Strategy) {
 	s.Strategy = Strategy
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fc12154791502702980a046e3507ab317e48f675
