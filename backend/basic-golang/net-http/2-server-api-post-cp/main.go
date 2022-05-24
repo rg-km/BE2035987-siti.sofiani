@@ -56,20 +56,24 @@ func TablesHandler(w http.ResponseWriter, r *http.Request) {
 	// logic handle POST request
 	if r.Method == "POST" {
 		// TODO: answer here
+		if r.Body == nil {
+			http.Error(w, "Please send a request body", http.StatusBadRequest)
+			return
+		}
+
+		// baca request body
 		body, err := ioutil.ReadAll(r.Body)
 		if err != nil {
-			panic(err)
-		}
-		
-		var newData []Table
-
-		err = json.Unmarshal(body, &newData)
-		if err != nill {
-			panic(err)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 
-		for _, table != range newData {
-			data = append(data, table)
+		// decode request body ke dalam format JSON
+		var tables []Table
+		err = json.Unmarshal(body, &tables)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 
 		// set header response code with status created/201

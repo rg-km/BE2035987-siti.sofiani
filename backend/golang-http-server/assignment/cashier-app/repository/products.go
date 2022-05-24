@@ -10,18 +10,19 @@ type ProductRepository struct {
 	db db.DB
 }
 
+const productDbName = "products"
+
+var productColumns = []string{"category", "product_name", "price"}
+
 func NewProductRepository(db db.DB) ProductRepository {
 	return ProductRepository{db}
 }
 
 func (u *ProductRepository) LoadOrCreate() ([]Product, error) {
-	// return []Product{}, nil // TODO: replace this
-	records, err := u.db.Load("products")
+	records, err := u.db.Load(productDbName)
 	if err != nil {
-		records = [][]string{
-			{"category", "product_name", "price"},
-		}
-		if err := u.db.Save("product", records); err != nil {
+		records = [][]string{productColumns}
+		if err := u.db.Save(productDbName, records); err != nil {
 			return nil, err
 		}
 	}
@@ -33,21 +34,17 @@ func (u *ProductRepository) LoadOrCreate() ([]Product, error) {
 			return nil, err
 		}
 
-		user := Product{
+		product := Product{
 			Category:    records[i][0],
 			ProductName: records[i][1],
 			Price:       price,
 		}
-		result = append(result, user)
+		result = append(result, product)
 	}
+
 	return result, nil
 }
 
 func (u *ProductRepository) SelectAll() ([]Product, error) {
-	// return []Product{}, nil // TODO: replace this
-	productItems, err := u.LoadOrCreate()
-	if err != nil {
-		return nil, err
-	}
-	return productItems, nil
+	return u.LoadOrCreate()
 }

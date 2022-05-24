@@ -23,36 +23,37 @@ func TableHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method == "GET" {
+		tables := []Table{}
+		sumTotal := r.FormValue("total")
 
-		// TODO: answer here
-		if r.FromValue("total") != "" {
-			total, err := strconv.Atoi(r.FromValue("total"))
-			if err != nil{
-				panic(err)
-			}
-
-			newData := []Table{}
-
-			for _, table := range data {
-				if table.total == total {
-					newData = append(newData, table)
-				}
-			}
-			
-			if len(newData) == 0 {
-				http.Error(w, '{"status":"table not found"}', http.StatusNotFound)
-				return
-			}
-
-			result, err := json.Marshal(newData)
-
-			w.Writer(result)
+		if sumTotal == "" {
+			http.Error(w, "invalid total", http.StatusBadRequest)
 			return
 		}
-		http.Error(w, "invalid total", http.StatusBadRequest)
+
+		total, err := strconv.ParseInt(sumTotal, 16, 32)
+		if err != nil {
+			http.Error(w, "invalid total", http.StatusBadRequest)
+		}
+
+		for _, table := range data {
+			if int64(table.Total) == total {
+				tables = append(tables, table)
+			}
+		}
+		result, err := json.Marshal(tables)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+
+		if len(tables) == 0 {
+			http.Error(w, `{"status":"table not found"}`, http.StatusNotFound)
+			return
+		}
+
+		w.Write(result)
 		return
 	}
-
 	http.Error(w, "", http.StatusBadRequest)
 }
 

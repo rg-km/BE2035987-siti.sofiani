@@ -18,21 +18,19 @@ func (s Scores) Len() int {
 }
 
 func (s Scores) Less(i, j int) bool {
-	total := make(map[string]int)
+	// Less Functions
+	name1 := s[i].Name
+	name2 := s[j].Name
 
-	for _, v := range s{
-		total[v.Name] = (v.Correct * 4) - v.Wrong
+	score1 := s[i].Correct*4 - s[i].Wrong
+	score2 := s[j].Correct*4 - s[j].Wrong
+
+	if score1 == score2 {
+		return name1 < name2
 	}
+	return score1 > score2
 
-	if total[s[i].Name] == total[s[j].Name] {
-		if s[i].Correct < s[j].Correct {
-			return true
-		} else if s[i].Correct == s[j].Correct {
-			return false
-		}
-	}
-
-	return total[s[i].Name] < total[s[j].Name]
+	// TODO: replace this
 }
 
 func (s Scores) Swap(i, j int) {
@@ -40,7 +38,7 @@ func (s Scores) Swap(i, j int) {
 }
 
 func (s Scores) TopStudents() []string {
-	sort.Sort(sort.Reverse(s))
+	sort.Sort(s)
 	names := []string{}
 	for _, score := range s {
 		names = append(names, score.Name)

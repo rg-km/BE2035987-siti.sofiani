@@ -21,3 +21,4 @@ var _ = Describe("Goroutine", func() {
 		Expect(called).To(Equal(true))
 	})
 })
+

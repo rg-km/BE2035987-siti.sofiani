@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/ruang-guru/playground/backend/data-structure/assignment/text-editor/stack"
 )
 
@@ -24,61 +26,17 @@ func NewTextEditor() *TextEditor {
 }
 
 func (te *TextEditor) Write(ch rune) {
-	te.RedoStack.SetToEmpty()
-	te.UndoStack.Push(ch)
+	// TODO: answer here
 }
 
 func (te *TextEditor) Read() []rune {
-	//initiate a new stack and call newStack function
-	tmp := stack.NewStack()
-	result := []rune{}
-
-	//when text editor has no inserted character
-	if te.UndoStack.Top == -1 {
-		return nil
-	}
-
-	for te.UndoStack.Top > -1 {
-		//call pop function from stack
-		pop, _ := te.UndoStack.Pop()
-		//push the popped element to the new stack
-		tmp.Push(pop)
-	}
-
-	for tmp.Top > -1 {
-		//call peek function from stack
-		peek, _ := tmp.Peek()
-
-		//push the popped element to the new stack
-		result = append(result, peek)
-		tmp.Pop()
-
-		//push the popped element to the new stack
-		te.UndoStack.Push(peek)
-	}
-	return result
+	// TODO: answer here
 }
 
 func (te *TextEditor) Undo() {
-	//call peek function to get the top element
-	peek, err := te.UndoStack.Peek()
-	if err != nil {
-		return
-	}
-
-	//call pop function to remove the top element
-	te.UndoStack.Pop()
-
-	te.RedoStack.Push(peek)
+	// TODO: answer here
 }
 
 func (te *TextEditor) Redo() {
-	peek, err := te.RedoStack.Peek()
-	if err != nil {
-		return
-	}
-
-	te.RedoStack.Pop()
-
-	te.UndoStack.Push(peek)
+	// TODO: answer here
 }

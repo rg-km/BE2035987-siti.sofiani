@@ -11,8 +11,11 @@ func main() {
 		www.ruangguru.com -> 1
 		helloworld -> -1
 	*/
-	result := ThreeConsecutiveCharacterPosition("helloworld")
+	result := ThreeConsecutiveCharacterPosition("lll")
 	fmt.Println(result)
+
+	resCorrect := ThreeConsecutiveCharacterPositionCorrect("lll")
+	fmt.Println(resCorrect)
 }
 
 func ThreeConsecutiveCharacterPosition(word string) int {
@@ -25,16 +28,10 @@ func ThreeConsecutiveCharacterPosition(word string) int {
 }
 
 func ThreeConsecutiveCharacterPositionCorrect(word string) int {
-	if  len(word) == 0 {
-		return -1
-	}
-
-	//fmt.Println(len(word)) // 0 - 0 = 10 characters 
-
-	for i := 0; i < len(word)-2; i++ { // 0 - 8 = 9 characters
+	for i := 0; i < len(word)-2; i++ {
 		if word[i] == word[i+1] && word[i] == word[i+2] {
-			return i +1 // 8 characters + 1 = 9 characters (len(word) = 10)
+			return i + 1
 		}
 	}
-	return -1 // TODO replace this
+	return -1
 }

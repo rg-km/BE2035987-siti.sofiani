@@ -11,39 +11,35 @@ import (
 // Route kedua yaitu "/hello" yang menghandle SayHelloHandler
 
 func TimeHandler() http.HandlerFunc {
-	t := time.Now()
-
-	handler := func(w Http.ResponseWriter, r *http.Request){
-		w.Write([]byte(fmt.Sprintf("%v, %v, %v, %v", t.Weekday(), t.Day(), t.Month(), t.Year())))
-	}
-	return handler
-	// TODO: replace this
+	return func(w http.ResponseWriter, r *http.Request) {
+		t := time.Now()
+		result := fmt.Sprintf("%v, %v %v %v", t.Weekday(), t.Day(), t.Month(), t.Year())
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(result))
+	} // TODO: replace this
 }
 
 func SayHelloHandler() http.HandlerFunc {
-	handler := func(w http.ResponseWriter, r *http.Request){
+	return func(w http.ResponseWriter, r *http.Request) {
 		name := r.URL.Query().Get("name")
-
 		if name != "" {
-			w.Write([]byte(fmt.Sprintf("Hello, %s!", name)))
+			result := fmt.Sprintf("Hello, %v!", name)
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte(result))
 			return
 		}
 
-		w.Write([]byte("Hello there"))
-	}
-	return handler
-	// TODO: replace this
+		result := "Hello there"
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(result))
+	} // TODO: replace this
 }
 
 func GetMux() *http.ServeMux {
 	mux := http.NewServeMux()
 	// TODO: answer here
-	mux.HandlerFunc("/time", TimeHandler())
-	mux.HandlerFunc("/Hello", SayHelloHandler())
-	mux.HandlerFunc("/costum", func(w. http.ResponseWriter, r *http.Request) {
-		http.Error(w, "not found", http.StatusNotFound)
-	})
-	
+	mux.HandleFunc("/time", TimeHandler())
+	mux.HandleFunc("/hello", SayHelloHandler())
 	return mux
 
 }
