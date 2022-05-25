@@ -12,5 +12,5 @@ func Test2CompositeCp(t *testing.T) {
 	RunSpecs(t, "2CompositeCp Suite")
 
 }
-=======
+
 
