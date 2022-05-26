@@ -12,7 +12,7 @@ var _ = Describe("Array One to Many", func() {
 		It("should get phone table by StudentID from student table", func() {
 			db1 := bdp.NewPhoneDB()
 			db1.InsertPhone(62, 1234567890, 1)
-			db1.InsertPhone(62, 1345678902, 1)
+			db1.InsertPhone(62, 2345678901, 1)
 			db1.InsertPhone(62, 3243434343, 1)
 
 			db2 := bdp.NewUserDB()
@@ -22,7 +22,7 @@ var _ = Describe("Array One to Many", func() {
 			phone := db1.WherePhone(3)
 			Expect(phone.ID).To(Equal(3))
 			Expect(phone.CountryCode).To(Equal(62))
-			Expect(phone.Number).To(Equal(2121212121))
+			Expect(phone.Number).To(Equal(3243434343))
 
 			user := db2.GetUser(phone.UserID)
 			Expect(user.ID).To(Equal(1))
