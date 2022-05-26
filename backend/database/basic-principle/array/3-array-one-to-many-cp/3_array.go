@@ -61,21 +61,19 @@ func (db *UserTable) InsertUser(name string, age int) {
 }
 
 func (db *PhoneTable) WherePhone(id int) *PhoneRow {
-<<<<<<< HEAD
+
 	for _, phone := range *db {
 		if phone.ID == id {
 			return &phone
 		}
 	}
 	return nil
-=======
 	// TODO: answer here
->>>>>>> fc12154791502702980a046e3507ab317e48f675
 }
 
 func (db *UserTable) GetUser(userID int) UserRow {
 	var result UserRow
-<<<<<<< HEAD
+
 	for _, user := range *db {
 		if user.ID == userID {
 			result = user
@@ -84,8 +82,7 @@ func (db *UserTable) GetUser(userID int) UserRow {
 	}
 	return result
 }
-=======
+
 	// TODO: answer here
 	return result
-}
->>>>>>> fc12154791502702980a046e3507ab317e48f675
+
