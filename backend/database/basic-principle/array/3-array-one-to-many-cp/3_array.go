@@ -83,6 +83,4 @@ func (db *UserTable) GetUser(userID int) UserRow {
 	return result
 }
 
-	// TODO: answer here
-	return result
 
