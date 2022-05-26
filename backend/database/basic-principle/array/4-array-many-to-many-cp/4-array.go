@@ -32,7 +32,7 @@ func main() {
 	db.InsertUser("Gina", 20)
 
 	db2.InsertPhone(62, 1234567890)
-	db2.InsertPhone(62, 2345678901)
+	db2.InsertPhone(62, 9087654321)
 
 	db3.InsertUserPhone(1, 1)
 	db3.InsertUserPhone(1, 2)
