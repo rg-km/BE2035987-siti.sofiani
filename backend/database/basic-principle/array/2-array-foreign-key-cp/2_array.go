@@ -84,7 +84,3 @@ func (db *SchoolTable) GetSchool(schoolID int) SchoolRow {
 }
 	// TODO: answer here
 
-func (db *SchoolTable) GetSchool(schoolID int) SchoolRow {
-	// TODO: answer here
-}
-
