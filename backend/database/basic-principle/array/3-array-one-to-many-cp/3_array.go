@@ -6,81 +6,60 @@ type PhoneRow struct {
 	ID          int // primary key
 	CountryCode int
 	Number      int
-	UserID      int // foreign key
 }
 
 type UserRow struct {
-	ID   int // primary key
-	Name string
-	Age  int
+	ID       int // primary key
+	Name     string
+	Age      int
+	PhoneIDs []int // foreign key
 }
 
-type PhoneTable []PhoneRow
 type UserTable []UserRow
+type PhoneTable []PhoneRow
 
 func main() {
 	db := make(UserTable, 0)
 	db2 := make(PhoneTable, 0)
 
-	db.InsertUser("John", 20)
-	db.InsertUser("Gina", 20)
+	db.InsertUser("John", 20, []int{1, 2})
+	db.InsertUser("Gina", 20, []int{1, 2, 3})
 
-	db2.InsertPhone(62, 1234567890, 1)
-	db2.InsertPhone(62, 2345678901, 1)
-	db2.InsertPhone(62, 3243434343, 1)
+	db2.InsertPhone(62, 1234567890)
+	db2.InsertPhone(62, 3456789012)
+	db2.InsertPhone(62, 2121212121)
 
-	fmt.Println("Phones:")
-	for _, row := range db2 {
-		fmt.Println("| UserID: ", db.GetUser(row.UserID).ID, "| Name: ", db.GetUser(row.UserID).Name, "| Age: ", db.GetUser(row.UserID).Age, "| PhoneID: ", row.ID, "| Country Code: ", row.CountryCode, "| Number: ", row.Number, "|")
+	fmt.Println("Users:")
+	for _, row := range db {
+		for _, phoneID := range row.PhoneIDs {
+			fmt.Println("| ID: ", row.ID, "| Name: ", row.Name, "| Age: ", row.Age, "| Phone Data: ", db2.GetPhone(phoneID), "|")
+		}
 	}
 }
 
-func NewPhoneDB() PhoneTable {
-	return make(PhoneTable, 0)
+func (db *UserTable) InsertUser(name string, age int, phoneIDs []int) {
+	(*db) = append(*db, UserRow{
+		ID:       len(*db) + 1,
+		Name:     name,
+		Age:      age,
+		PhoneIDs: phoneIDs,
+	})
 }
 
-func NewUserDB() UserTable {
-	return make(UserTable, 0)
-}
-
-func (db *PhoneTable) InsertPhone(countryCode int, number int, userID int) {
+func (db *PhoneTable) InsertPhone(countryCode int, number int) {
 	(*db) = append(*db, PhoneRow{
 		ID:          len(*db) + 1,
 		CountryCode: countryCode,
 		Number:      number,
-		UserID:      userID,
 	})
 }
 
-func (db *UserTable) InsertUser(name string, age int) {
-	(*db) = append(*db, UserRow{
-		ID:   len(*db) + 1,
-		Name: name,
-		Age:  age,
-	})
-}
-
-func (db *PhoneTable) WherePhone(id int) *PhoneRow {
-
-	for _, phone := range *db {
-		if phone.ID == id {
-			return &phone
-		}
-	}
-	return nil
-	// TODO: answer here
-}
-
-func (db *UserTable) GetUser(userID int) UserRow {
-	var result UserRow
-
-	for _, user := range *db {
-		if user.ID == userID {
-			result = user
-			break
+func (db *PhoneTable) GetPhone(phoneID int) PhoneRow {
+	var result PhoneRow
+	for _, row := range *db {
+		if row.ID == phoneID {
+			result = row
 		}
 	}
 	return result
 }
-
-
