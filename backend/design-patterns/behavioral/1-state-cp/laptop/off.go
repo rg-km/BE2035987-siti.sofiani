@@ -19,8 +19,4 @@ func (o Off) CanTurnOnLaptop() bool {
 
 func (o Off) Sleep() {
 	return
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fc12154791502702980a046e3507ab317e48f675
