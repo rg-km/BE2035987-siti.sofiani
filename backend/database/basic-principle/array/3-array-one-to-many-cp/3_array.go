@@ -26,8 +26,7 @@ func main() {
 	db.InsertUser("Gina", 20, []int{1, 2, 3})
 
 	db2.InsertPhone(62, 1234567890)
-	db2.InsertPhone(62, 2345678901)
-	db2.InsertPhone(62, 3243434343)
+
 
 	fmt.Println("Users:")
 	for _, row := range db {
