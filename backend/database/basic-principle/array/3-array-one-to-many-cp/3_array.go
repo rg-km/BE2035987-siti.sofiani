@@ -26,7 +26,7 @@ func main() {
 	db.InsertUser("Gina", 20, []int{1, 2, 3})
 
 	db2.InsertPhone(62, 1234567890)
-	db2.InsertPhone(62, 8765432109)
+	db2.InsertPhone(62, 876543210)
 	db2.InsertPhone(62, 2121212121)
 
 	fmt.Println("Users:")
